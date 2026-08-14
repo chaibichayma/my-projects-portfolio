@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "488526922653",
+    "firebase_url": "https://basebackend-51a59-default-rtdb.firebaseio.com",
+    "project_id": "basebackend-51a59",
+    "storage_bucket": "basebackend-51a59.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:488526922653:android:fa012e8e5b8a3955f4e574",
+        "android_client_info": {
+          "package_name": "com.example.mynote_pharmachem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "488526922653-j7g8nucrn42otc4bhfm706653ejivees.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.mynote_pharmachem",
+            "certificate_hash": "fb998c643af2fecdba9c96f5dd0aa55ab07b6bc2"
+          }
+        },
+        {
+          "client_id": "488526922653-cfv9tpu8siqeufmuanu0id81q071psn9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDP8rx3gIXHEE-O6qZMjhk-FzwUZBb4doc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "488526922653-cfv9tpu8siqeufmuanu0id81q071psn9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "488526922653-cngqj0968eapu2ul9lc0knssl7heq1kc.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.mynotePharmachem.RunnerTests"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

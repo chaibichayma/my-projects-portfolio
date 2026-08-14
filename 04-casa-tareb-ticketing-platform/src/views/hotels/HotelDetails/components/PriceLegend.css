@@ -1,0 +1,78 @@
+
+.price-legend {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 🔥 CHAQUE LIGNE A UNE HAUTEUR FIXE */
+.price-row {
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+/* ⬅️ colonne gauche FIXE */
+.price-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 180px;          /* ← clé de l’alignement */
+}
+
+
+/* Carré gris */
+.dot-box {
+  width: 28px;
+  height: 28px;
+  background-color: grey;
+  border-radius: 6px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+}
+
+/* Cercle */
+.price-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+/* Texte */
+.price-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Titres */
+.price-title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  
+}
+
+.price-subtitle {
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 4px;
+}
+
+.price-legend-title {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 4px solid #ddd;
+}
+
+/* Légende à droite */
+.price-outside {
+  width: 260px;
+  padding: 10px;
+}

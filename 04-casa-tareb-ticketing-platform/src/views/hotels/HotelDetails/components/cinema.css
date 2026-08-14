@@ -1,0 +1,12 @@
+/* Forcer la largeur du modal */
+.custom-width-modal .modal-dialog {
+  max-width: 1200px !important;  /* largeur max */
+  width: 90% !important;         /* presque toute la largeur de l'écran */
+  margin: 1.75rem auto;          /* centrer correctement le modal */
+}
+
+/* Optionnel : rendre le contenu scrollable si le contenu dépasse */
+.custom-width-modal .modal-body {
+  max-height: 80vh;              /* hauteur max = 80% de l'écran */
+  overflow-y: auto;              /* scroll vertical si besoin */
+}

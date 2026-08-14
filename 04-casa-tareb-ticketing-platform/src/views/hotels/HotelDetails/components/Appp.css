@@ -1,0 +1,24 @@
+/* Aligner Horaires + bouton recherche côte à côte */
+@media (min-width: 992px) {
+  .form-size-lg,
+  .form-fs-md {
+    height: 100%;
+  }
+
+  .row.g-4 > .col-lg-3,
+  .row.g-4 > .col-lg-2 {
+    display: flex;
+    align-items: flex-end;
+  }
+}
+
+/* bouton suppresion */
+.trash-icon {
+  transition: all 0.2s ease;
+}
+
+.trash-icon:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+

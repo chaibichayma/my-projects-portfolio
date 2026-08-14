@@ -1,0 +1,116 @@
+.green-cinema {
+  display: flex;
+  justify-content: center;
+  padding: 5px 2px;
+  overflow-x: auto;
+}
+
+.green-cinema-row {
+  display: flex;
+  gap: 27px;
+  align-items: flex-end;
+}
+
+.green-table-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.green-table-code {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  background-color: #3aa66b;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.green-table-area {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  position: relative; /* 🔑 permet aux enfants d’être au-dessus */
+  z-index: 2; /* juste en dessous du numéro de table */
+}
+
+
+.green-table-rect {
+  width: 34px;
+  height: 80px;
+  background-color: #bfe6cf;
+  border-radius: 8px;
+}
+
+.green-chairs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.green-chair {
+  width: 18px;
+  height: 22px;
+  background: #9a9a9a; /* gris foncé disponible */
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+
+
+
+/* COLONNES DE CHAISES */
+.green-chairs {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+
+.green-chair.active {
+  background: #ff8c1a; /* orange sélection chaise */
+  color: #9a9a9a;
+}
+
+
+.green-chair.reserved {
+  background-color: orange;
+  cursor: not-allowed;
+}
+
+.green-chair.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.green-table-rect.reserved {
+  background-color: orange;
+  cursor: not-allowed;
+}
+
+.green-table-rect.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+
+
+
+

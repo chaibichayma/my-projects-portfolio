@@ -1,0 +1,655 @@
+/* Conteneur principal avec scroll horizontal unique */
+.cinema-wrapper {
+  width: 100%;
+  min-height: 100vh;
+  background: #eaeaea;
+  overflow-x: auto;  /* 🔹 scroll horizontal unique */
+  overflow-y: hidden; 
+  padding: 20px;
+  box-sizing: content-box; 
+  scroll-behavior: smooth;
+  
+}
+
+/* Conteneur interne pour empiler les rangées verticalement */
+.cinema-scroll {
+  display: flex;
+  flex-direction: column; /* vertical */
+  row-gap: 1px;          /* espace entre les rangées */
+  min-width: max-content;   /* 🔥 augmente la largeur du scroll */
+  padding: 0 50px; 
+}
+
+.PremiumTablesRow,
+.VipTablesRow,
+.RedTablesRow {
+  margin-bottom: 1px; /* réduit l’espace entre elles */
+}
+
+
+/* Chaque rangée reste horizontale */
+.PremiumTablesRow,
+.VipTablesRow,
+.RedTablesRow,
+.BlueTablesRow {
+  display: flex;
+  column-gap: 15px;
+  padding: 0 10px; /* un petit padding pour que les éléments du bord ne soient pas collés */
+  margin-top: 5px; 
+}
+
+
+/* Scrollbar masquée */
+.cinema-wrapper::-webkit-scrollbar {
+  height: 8px; /* hauteur scrollbar horizontale */
+}
+.cinema-wrapper {
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
+}
+
+
+
+
+/* =========================
+   Cinema Layout
+========================= */
+
+
+
+
+@media (max-width: 480px) {
+  .zone-item {
+    gap: 8px;
+  }
+
+  .zone-square {
+    width: 16px;
+    height: 16px;
+  }
+
+  .zone-title {
+    font-size: 13px;
+  }
+
+  .zone-price {
+    font-size: 11px;
+  }
+}
+
+
+
+
+
+
+/* Ligne verticale */
+.outside-divider {
+  width: 2px;
+  height: 500px;
+  background-color: #e5e5e5;
+}
+
+.cinema-wrapper *::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+/* Firefox */
+.cinema-wrapper * {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+/* IMPORTANT : autoriser le scroll */
+.blue-tables,
+.green-tables {
+  overflow-x: auto;   /* ✅ scroll actif */
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.blue-cinema,
+.blue-cinema-row {
+  overflow: visible;
+  white-space: nowrap;
+}
+
+
+/* Si tu veux un espace légèrement plus grand uniquement entre Premium, VIP et Red */
+
+
+
+
+
+/* alerte */
+
+.commande-alert-top {
+  position: fixed; /* 🔹 fixe à l'écran même au scroll */
+  top: 80px;       /* légèrement en dessous du haut */
+  right: 20px;     /* côté droit */
+  width: 250px;
+  height: 70px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  gap: 12px;
+  z-index: 1000;  /* au-dessus de tout */
+  animation: fadeInSlide 0.3s ease-out;
+}
+
+
+.alert-icon {
+  color: #ff9800;
+  flex-shrink: 0;
+}
+
+.alert-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.alert-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.alert-message {
+  font-size: 14px;
+  color: #333;
+}
+
+/* Animation fade in + slide depuis le haut */
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.premium-seat.locked {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+  .cinema-wrapper {
+    overflow-x: hidden;
+    padding: 10px;
+  }
+
+  .cinema-scroll {
+    padding: 0;
+    row-gap: 12px;
+  }
+
+  /* 🔥 4 sièges EXACTEMENT par ligne */
+  .PremiumTablesRow,
+  .VipTablesRow,
+  .RedTablesRow,
+  .BlueTablesRow,
+  .GreenTablesRow,
+  .RedSeatsRow,
+  .blue-tables,
+  .green-tables {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    justify-items: center;
+  }
+
+  .zone-square,
+  .seat,
+  .table {
+    width: 36px;
+    height: 36px;
+  }
+
+  .zone-title {
+    font-size: 12px;
+  }
+
+  .zone-price {
+    font-size: 10px;
+  }
+}
+
+/* =====================
+   LISTE DES BILLETS
+===================== */
+.tickets-list {
+  padding: 15px;
+}
+
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+}
+
+.ticket-row button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #FFD700;   /* ✅ jaune */
+  color: #000;           /* texte lisible */
+  font-weight: 600;
+  cursor: pointer;
+}
+
+
+/* =====================
+   POPUP PLAN
+===================== */
+.plan-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  
+}
+
+.plan-modal {
+  background: #fff;
+  width: 98%;          /* occupe presque tout l'écran horizontalement */
+  max-width: 1500px; 
+  height: auto;           /* hauteur selon contenu */
+  max-height: 90vh;       /* limite à l'écran */
+  overflow-y: auto;       /* scroll vertical si nécessaire */
+  overflow-x: hidden;
+  border-radius: 16px;
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+
+
+/* 🔥 Désactiver tout scroll interne DANS le popup */
+
+
+.plan-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3000;
+  overflow: hidden; /* 🔥 */
+  
+}
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  border: none;
+  background: none;
+  font-size: 18px;
+  cursor: pointer;
+  color: #000; /* ✅ noir */
+}
+
+/* =====================
+   FIX SCROLL POPUP
+===================== */
+
+
+
+
+
+
+/* wrapper scroll horizontal unique */
+/* wrapper scroll horizontal unique */
+.tables-wrapper {
+  overflow-x: auto;
+  overflow-y: visible;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start; /* 🔥 PAS center */
+  align-items: flex-start;
+  padding: 70px;
+}
+
+
+.tables-inner {
+  display: flex;
+  flex-direction: column;
+  min-width: max-content;
+  gap: 1px;
+
+  margin-left: auto;   /* ✅ centrage intelligent */
+  margin-right: auto;  /* ✅ */
+}
+
+
+/* Chaque rangée en flex horizontal */
+.tables-inner > * {
+  display: flex;
+  justify-content: center; /* ✅ centre chaque ligne */
+  gap: 10px;
+}
+
+
+/* =====================
+   STYLE BILLETS (IMAGE)
+===================== */
+
+/* Ligne billet */
+.ticket-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+/* Colonne gauche */
+.ticket-left {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Date + heure */
+.ticket-meta {
+  display: flex;
+  gap: 14px;
+  font-size: 14px;
+  color: #444;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px; /* petit espace icône → texte */
+}
+
+/* Ligne titre + prix */
+.ticket-info {
+  display: flex;
+  align-items: flex-start; /* remonte un peu le TND */
+  gap: 30px;               /* espace entre le titre et le prix */
+  flex-wrap: wrap;         /* ✅ permet au prix de passer en dessous si trop large */
+  max-width: 100%;         /* pas de débordement */
+}
+
+
+.ticket-title {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.ticket-price {
+  display: flex;
+  flex-direction: row;      /* TND à droite de la somme */
+  align-items: flex-start;  /* remonte légèrement le TND */
+  gap: 4px;                 /* espace entre montant et TND */
+  white-space: nowrap;  
+  color: #000;    /* évite que le montant se casse */
+}
+.price-amount {
+  font-size: 18px;
+  font-weight: 700;
+}
+.price-currency {
+  font-size: 12px;          /* un peu plus petit */
+  font-weight: 600;
+  color: #000;
+}
+
+/* MOBILE – écran < 480px */
+@media (max-width: 480px) {
+  .ticket-info {
+    flex-direction: column; /* montant + TND sous le titre */
+    align-items: flex-start; 
+    gap: 4px;
+  }
+
+  .ticket-price {
+    width: auto;           /* occupe juste l'espace nécessaire */
+  }
+
+  .price-amount {
+    font-size: 19px;
+  }
+
+  .price-currency {
+    font-size: 19px;
+  }
+}
+
+
+
+/* Bouton Plan */
+.ticket-row button {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #555;
+  background: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 480px) {
+
+  .ticket-info {
+    justify-content: flex-start; /* 🔥 empêche l’étirement */
+    gap: 10px;
+  }
+
+  .ticket-price {
+    width: auto;          /* 🔥 enlève la largeur fixe */
+    min-width: 40px;      /* garde un minimum */
+    align-items: flex-start; /* 🔥 rapproche du title */
+  }
+
+  .price-amount {
+    font-size: 16px;      /* un peu plus compact */
+  }
+
+  .price-currency {
+    font-size: 9px;
+  }
+}
+
+/* =====================
+   CONTENEUR BILLETS
+===================== */
+.tickets-container {
+  background: #fff;
+  max-width: 700px;     /* 🔹 largeur */
+  width: 100%;
+  margin: 20px auto;   /* 🔹 centré */
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* Titre BILLETS */
+.tickets-header {
+  background: #000;
+  color: #fff;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 2px;
+  padding: 10px 0;
+  border-radius: 6px;
+  margin-bottom: 14px;
+}
+
+
+/* Bouton PLAN – JAUNE OR */
+.ticket-row button {
+  background-color: #FFD700;
+  color: #000;
+  border: 1px solid #d4af37;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Optionnel : hover un peu plus foncé */
+.ticket-row button:hover {
+  background-color: #e6c200;
+}
+
+/* HEADER en haut à gauche */
+/* TITRE EN HAUT À GAUCHE DU POPUP */
+.plan-header {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: left;
+  padding: 12px 16px 6px 16px; /* haut, droite, bas, gauche */
+}
+
+/* Header popup */
+.plan-header-section {
+  display: flex;
+  flex-direction: column; /* garde le titre principal en haut */
+  align-items: flex-start;
+  padding: 16px;
+}
+
+.plan-header-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+.plan-divider {
+  width: 100%;
+  height: 2px;
+  background-color: #d1d1d1;
+  margin: 8px 0;
+  
+}
+
+/* Ligne avec places disponibles + titre à gauche */
+.plan-available-row {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* espace entre le titre et le texte des places */
+  justify-content: center; /* ← centré horizontalement */
+}
+
+.plan-available-title {
+  font-weight: 500;
+  color: #e91e63; /* couleur du titre */
+  justify-content: center; /* ← centré horizontalement */
+}
+
+.plan-available-count {
+  font-size: 14px;
+  color: #e91e63; /* couleur des places libres */
+  font-weight: 500;
+}
+
+.plan-header-subtitle {
+  font-family: "Arial", "Helvetica", sans-serif; /* police qui gère bien le gras */
+  font-weight: 700; /* BOLD */
+  
+  font-size: 18px;
+  color: #000;
+  margin: 8px 0;
+  text-align: center; /* centrer le texte */
+  
+}
+
+.plan-available-row {
+  display: flex;
+  align-items: center;
+  gap: 4px; /* espace entre les éléments */
+  text-align: center; /* centrer le texte */
+}
+
+.separator {
+  font-weight: 700; /* en gras si tu veux */
+  color: #e91e63;
+}
+
+.plan-legend {
+  display: flex;
+  justify-content: center; /* ← centré horizontalement */
+  gap: 20px; /* espace entre les items */
+  margin-top: 12px; /* espace au-dessus de la légende */
+  align-items: center;
+}
+
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}
+
+.legend-square {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.legend-orange {
+  background-color: #FFA500;
+}
+
+.legend-grey {
+  background-color: #8e8e8e;
+}
+
+.legend-red {
+  background-color: #b91c1c; /* rouge pour Salons Cléopâtre */
+}
+
+.legend-blue {
+  background-color: #1e40af; /* bleu pour Salons Tanit */
+}
+
+.legend-green {
+  background-color: #34a853; /* vert pour Salons Ramsès */
+}
+
+/* CENTRER HORIZONTALEMENT SUR WEB (desktop) */
+@media (min-width: 768px) {
+  .plan-header-section {
+    align-items: center;   /* centre tous les enfants horizontalement */
+    text-align: center;    /* texte centré */
+  }
+
+  .plan-header-subtitle {
+    text-align: center;    /* s'assure que le texte est centré */
+  }
+
+  .plan-available-row {
+    justify-content: center;  /* centre le bloc horizontalement */
+  }
+}

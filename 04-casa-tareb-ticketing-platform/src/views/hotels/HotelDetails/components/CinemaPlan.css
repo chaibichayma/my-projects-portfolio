@@ -1,0 +1,765 @@
+.plan-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image-container {
+  position: relative;
+  width: 1000px;
+}
+
+.image-container img {
+  width: 100%;
+  display: block;
+}
+
+
+
+/* 🎯 Cercle */
+.table-circle {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 17.5px;
+  height: 17.5px;
+  border-radius: 50%;
+  background-color: #8B0000;
+
+  color: white;
+  font-size: 9px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+
+
+.table-circle:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+/* ===== POPUP CARD ===== */
+.popup-card {
+  width: 550px;
+  background: #0b0f1a;
+  border-radius: 20px;
+  padding: 30px;
+  color: white;
+  position: relative;
+}
+
+/* HEADER */
+.popup-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.table-icon {
+  background: #b22222;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.popup-header h2 {
+  margin: 0;
+}
+
+.popup-header p {
+  margin: 0;
+  color: #aaa;
+  font-size: 14px;
+}
+
+.close-btn {
+  margin-left: auto;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* SCENE BUTTON */
+.scene-btn {
+  background: #7a5c00;
+  color: #ffd700;
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-align: center;
+  margin: 20px auto;
+  width: fit-content;
+  font-weight: bold;
+}
+
+/* TABLE VISUAL */
+.table-visual {
+  background: #6a0022;
+  border-radius: 15px;
+  height: 300px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.table-center {
+  background: #c41e1e;
+  width: 160px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.seat {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  background: #111c3d;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #2e3c7e;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.seat:hover {
+  transform: scale(1.05);
+}
+
+.seat.selected {
+  background: #ffd700;
+  color: black;
+  border: 2px solid #ffcc00;
+}
+
+
+
+.bottom {
+  margin-top: 10px;
+}
+
+/* STATS */
+.stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.stat {
+  flex: 1;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  margin: 0 5px;
+}
+
+.total {
+  background: #8b004b;
+}
+
+.free {
+  background: #003d1f;
+}
+
+.blocked {
+  background: #3d2a00;
+}
+
+.sold {
+  background: #3d1200;
+}
+
+.stat h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+/* ACTIONS */
+.actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.cancel {
+  background: transparent;
+  border: 1px solid #444;
+  color: white;
+  padding: 10px 80px;
+  border-radius: 13px;
+  cursor: pointer;
+}
+
+.table-title {
+  color: white;
+  font-size: 21px;
+  font-weight: bold;
+}
+
+.buy {
+  background: #a88b00;
+  border: none;
+  padding: 10px 40px;
+  border-radius: 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.selection-bar {
+  margin-top: 20px;
+  background: #3a2d00;
+  border: 1px solid #ffd700;
+  border-radius: 15px;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.selection-bar .price {
+  font-size: 24px;
+  font-weight: bold;
+  color: #ffd700;
+}
+
+
+/* SALON POSITIONS */
+.salon-seat {
+  position: absolute;
+}
+
+.left-top {
+  left: 80px;
+  top: 90px;
+}
+
+.left-bottom {
+  left: 80px;
+  bottom: 90px;
+}
+
+
+
+.right-top {
+  right: 80px;
+  top: 90px;
+}
+
+.right-bottom {
+  right: 80px;
+  bottom: 90px;
+}
+
+.bottom-center {
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* SALON CIRCLE STYLE */
+.salon-circle {
+  width: 26px;
+  height: 26px;
+  background-color: #8B0000; /* couleur or moderne */
+  font-size: 10px;
+  flex-direction: column;
+  padding-top: 2px;
+}
+.green-circlee {
+  width: 26px;
+  height: 26px;
+  background-color: #006400; /* couleur or moderne */
+  font-size: 10px;
+  flex-direction: column;
+  padding-top: 2px;
+}
+
+/* Icône salon */
+.salon-icon {
+  font-size: 10px;
+  line-height: 10px;
+  margin-bottom: 1px;
+}
+
+
+.blue-circle {
+ background-color: #0b3d91;/* bleu */
+  color: white;
+  font-weight: bold;
+  height: 20px;
+  font-size: 2px;
+}
+
+.table-code-blue {
+  margin-top: 8px; /* descendre un peu le numéro sous l'icône */
+  font-size: 7px; /* ajuster la taille si besoin */
+}
+
+
+
+.people-icon {
+  position: absolute;
+  top: 30%;             /* centré verticalement sur le cercle */
+  left: 50%;            /* centré horizontalement */
+  transform: translate(-50%, -50%); /* parfaitement centré */
+  pointer-events: none; /* clic sur le cercle fonctionne toujours */
+}
+
+/* SALON CIRCLE STYLE */
+.salon-circle-bleu {
+  width: 26px;
+  height: 26px;
+  background-color: #0b3d91; /* couleur or moderne */
+  font-size: 10px;
+  flex-direction: column;
+  padding-top: 2px;
+}
+
+.green-circle {
+ background-color: #008000;/* bleu */
+  color: white;
+  font-weight: bold;
+  height: 20px;
+}
+
+.table-circle.green-circle {
+  display: flex;
+  flex-direction: column; /* empile icône et code */
+  align-items: center;
+  justify-content: center;
+  background-color: #006400; /* vert foncé */
+  width: 18px;
+  height: 21px;
+  border-radius: 50%;
+  color: white;
+  font-size: 9px;
+  cursor: pointer;
+}
+
+.salon-icon-green {
+  width: 12px;
+  height: 10px;
+  margin: 0;
+  
+}
+
+.table-code-green {
+  font-size: 2px;
+  margin-top: 3px; /* espace entre icône et code */
+}
+
+/* ===== TARIFS BAR ===== */
+
+.tarifs-bar {
+  margin-bottom: 15px; /* espace entre bande et image */
+}
+
+.tarifs-cards {
+  display: flex;
+  gap: 40px;
+}
+
+.tarif-card {
+  padding: 18px;
+  width: 200px;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+}
+
+.red-card {
+  background-color: #c62828;
+
+}
+
+.green-card {
+  background-color: #006400;
+
+
+}
+
+.blue-card {
+  background-color: #0b3d91;
+
+}
+
+/* BARRE HAUT */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* ZOOM */
+.zoom-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: #000;
+}
+
+.zoom-controls button {
+  background: black;
+  border: none;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.zoom-controls span {
+  font-weight: bold;
+  min-width: 40px;
+  text-align: center;
+}
+
+.image-container {
+  overflow: auto; /* permet scroll quand zoom */
+  position: relative;
+}
+
+.zoom-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  /* Supprimer les icônes dans tous les cercles */
+  .table-circle .people-icon,
+  .table-circle .salon-icon,
+  .table-circle .salon-icon-green {
+    display: none;
+  }
+
+  /* Toutes les tables : réduire les cercles */
+  .table-circle,
+  .salon-circle,
+  .salon-circle-bleu,
+  .green-circlee {
+    width: 3vw !important;
+    height: 3vw !important;
+    font-size: 0.8vw !important;
+  }
+
+  /* Cercles bleus (tables 34 → 51) */
+  .blue-circle {
+    width: 3vw !important;
+    height: 3vw !important;
+    font-size: 0.8vw !important;
+  }
+
+  /* Cercles verts (tables 64 → 80) */
+  .green-circle {
+    width: 3vw !important;
+    height: 3vw !important;
+    font-size: 0.8vw !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Supprimer les icônes */
+  .table-circle .people-icon,
+  .table-circle .salon-icon,
+  .table-circle .salon-icon-green {
+    display: none;
+  }
+
+  /* Toutes les tables : cercles plus petits */
+  .table-circle,
+  .salon-circle,
+  .salon-circle-bleu,
+  .green-circlee {
+    width: 2.5vw !important;
+    height: 2.5vw !important;
+    font-size: 0.7vw !important;
+  }
+
+  /* Cercles bleus (tables 34 → 51) */
+  .blue-circle {
+    width: 2.5vw !important;
+    height: 2.5vw !important;
+    font-size: 0.7vw !important;
+  }
+
+  /* Cercles verts (tables 64 → 80) */
+  .green-circle {
+    width: 2.5vw !important;
+    height: 2.5vw !important;
+    font-size: 0.7vw !important;
+  }
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .table-code-blue {
+    font-size: 0.8vw !important; /* taille adaptée au cercle */
+    margin-top: 0; /* ajuster si nécessaire */
+  }
+}
+
+@media (max-width: 480px) {
+  .table-code-blue {
+    font-size: 0.7vw !important;
+    margin-top: 0; /* ou 1px pour aligner */
+  }
+}
+
+
+/* ===== MOBILE RESPONSIVE POUR POPUP ===== */
+@media (max-width: 768px) {
+  .popup-card {
+    width: 90% !important;
+    padding: 20px !important;
+  }
+
+  .popup-header h2 {
+    font-size: 1.2rem !important;
+  }
+
+  .popup-header p {
+    font-size: 0.9rem !important;
+  }
+
+  .table-center {
+    width: 100px !important;
+    height: 50px !important;
+    font-size: 18px !important;
+  }
+
+  .seat {
+    width: 30px !important;
+    height: 30px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .selection-bar {
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.85rem !important;
+  }
+
+  .selection-bar .price {
+    font-size: 1rem !important;
+  }
+
+  .actions button {
+    padding: 8px 20px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .scene-btn {
+    font-size: 0.9rem !important;
+    padding: 6px 12px !important;
+  }
+
+  .stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .stat h3 {
+    font-size: 1rem !important;
+  }
+}
+
+/* ===== ULTRA COMPACT MOBILE POPUP ≤480px ===== */
+@media (max-width: 480px) {
+  /* Popup principal */
+  .popup-card {
+    width: 90% !important;
+    padding: 5px 8px !important;
+    max-height: 85vh; /* limite hauteur popup */
+    overflow-y: auto; /* scroll si nécessaire */
+  }
+
+  /* Header */
+  .popup-header {
+    gap: 5px !important;
+  }
+  .popup-header h2 {
+    font-size: 0.85rem !important;
+    line-height: 1.1 !important;
+  }
+  .popup-header p {
+    font-size: 0.65rem !important;
+    line-height: 1 !important;
+  }
+
+  /* Table center */
+  .table-center {
+    width: 50px !important;
+    height: 30px !important;
+    font-size: 12px !important;
+  }
+
+  /* Sièges */
+  .seat {
+    width: 40px !important;   /* un peu plus large */
+    height: 40px !important;  /* un peu plus haut */
+    font-size: 0.6rem !important; 
+  }
+
+  /* Barre de sélection */
+  .selection-bar {
+    flex-direction: column;
+    gap: 3px;
+    font-size: 0.6rem !important;
+    padding: 5px 6px !important;
+  }
+  .selection-bar .price {
+    font-size: 0.7rem !important;
+  }
+
+  /* Boutons */
+  .actions button {
+    padding: 3px 10px !important;
+    font-size: 0.7rem !important;
+  }
+
+  /* Bouton scène */
+  .scene-btn {
+    font-size: 0.65rem !important;
+    padding: 2px 6px !important;
+    margin: 8px auto !important;
+  }
+
+  /* Stats */
+  .stats {
+    flex-direction: column;
+    gap: 2px !important;
+  }
+  .stat {
+    padding: 6px !important;
+  }
+  .stat h3 {
+    font-size: 0.75rem !important;
+  }
+
+  /* Icônes salon et couleurs */
+  .table-center, .salon-icon, .salon-icon-green {
+    font-size: 11px !important;
+  }
+}
+
+
+/* ===== TARIFS & ZOOM MOBILE ===== */
+@media (max-width: 768px) {
+  /* Cartes tarifaires */
+  .tarifs-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  .tarif-card {
+    flex: 1 1 30%;
+    min-width: 80px;
+    padding: 8px 10px !important;
+    font-size: 0.9rem !important;
+    text-align: center;
+  }
+  .tarif-card span {
+    display: block;
+    font-size: 0.8rem !important;
+  }
+  .tarif-card strong {
+    font-size: 1rem !important;
+  }
+
+  /* Barre de zoom */
+  .zoom-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+    margin-top: 10px;
+    font-size: 0.85rem !important;
+  }
+  .zoom-controls button {
+    padding: 4px 8px !important;
+    font-size: 0.8rem !important;
+  }
+  .zoom-controls span {
+    min-width: 30px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Cartes tarifaires ultra compact */
+  .tarifs-cards {
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 6px;
+  }
+  .tarif-card {
+    flex: 1 1 auto;
+    padding: 4px 6px !important;
+    font-size: 0.7rem !important;
+  }
+  .tarif-card span {
+    font-size: 0.6rem !important;
+  }
+  .tarif-card strong {
+    font-size: 0.75rem !important;
+  }
+
+  /* Barre de zoom ultra compact */
+  .zoom-controls {
+    gap: 4px;
+    font-size: 0.65rem !important;
+  }
+  .zoom-controls button {
+    padding: 2px 4px !important;
+    font-size: 0.65rem !important;
+  }
+  .zoom-controls span {
+    min-width: 25px;
+    font-size: 0.65rem !important;
+  }
+}

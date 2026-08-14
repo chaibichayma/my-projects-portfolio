@@ -1,0 +1,82 @@
+.zone-legend {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: center;
+  flex-wrap: wrap; 
+}
+
+.zone-item {
+  display: flex;
+  align-items: center; /* ⬅️ au lieu de flex-start */
+  gap: 10px;
+}
+
+
+.zone-square {
+  width: 20px;
+  height: 20px;
+  border-radius: 4px;
+  margin-top: 0; /* ⬅️ au lieu de 4px */
+}
+
+
+.zone-square.red {
+  background-color: #e53935;
+}
+
+.zone-square.blue {
+  background-color: #1e88e5;
+}
+
+.zone-square.green {
+  background-color: #43a047;
+}
+.zone-square.jaune{
+  background-color: #FFD700;
+}
+
+.zone-square.purple{
+  background-color: #7b6cff;
+}
+
+.zone-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.zone-title {
+  font-weight: 600;
+  font-size: 15px;
+  color: #222;
+}
+
+.zone-price {
+  font-size: 13px;
+  color: #555;
+}
+
+.zone-square.orange {
+  background-color: orange;
+}
+
+@media (max-width: 480px) {
+  .zone-item {
+    gap: 8px;
+  }
+
+  .zone-square {
+    width: 16px;
+    height: 16px;
+  }
+
+  .zone-title {
+    font-size: 13px;
+  }
+
+  .zone-price {
+    font-size: 11px;
+  }
+}
+

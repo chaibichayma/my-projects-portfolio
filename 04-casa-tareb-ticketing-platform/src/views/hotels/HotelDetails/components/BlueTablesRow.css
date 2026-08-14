@@ -1,0 +1,116 @@
+.blue-cinema {
+  display: flex;
+  justify-content: center;
+  padding: 0 2px;  /* 🔑 padding-top réduit à 0 */
+  overflow-x: auto;
+  overflow-y: visible;
+  max-width: 100%;
+  margin-top: -50px; /* 🔥 remonte la rangée bleue vers le haut */
+}
+
+
+/* LIGNE DES TABLES */
+.blue-cinema-row {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;   /* 🔑 arc vers le haut */
+}
+
+/* WRAPPER TABLE */
+.blue-table-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: visible;
+  transition: transform 0.2s ease;
+}
+
+/* NUMÉRO TABLE */
+.blue-table-code {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 28px;
+  height: 28px;
+  background-color: #4aa3df;
+  border-radius: 50%;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+/* ZONE TABLE + CHAISES */
+.blue-table-area {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* TABLE */
+.blue-table-rect {
+  width: 34px;
+  height: 115px;
+  background-color: #b7ddf6;
+  border-radius: 8px;
+}
+
+/* COLONNES DE CHAISES */
+.blue-chairs {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* CHAISE */
+.blue-chair {
+  width: 20px;
+  height: 20px;
+  background: #9a9a9a;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.blue-chair.active {
+  background: #ff8c1a; /* orange sélection chaise */
+  color: #9a9a9a;
+}
+
+
+.blue-chair.reserved {
+  background-color: orange;
+  cursor: not-allowed;
+}
+
+.blue-chair.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.blue-table-rect.reserved {
+  background-color: orange;
+  cursor: not-allowed;
+}
+
+.blue-table-rect.disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+
+
+
+
+
+
+
+
